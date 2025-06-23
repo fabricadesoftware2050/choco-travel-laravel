@@ -26,6 +26,11 @@
     document.getElementById("closePopup").addEventListener("click", () => {
       document.getElementById("sessionPopup").classList.add("hidden");
       localStorage.setItem("popupShown", "true");
+        confetti({
+            particleCount: 250,
+            spread: 200,
+            origin: { y: 0.6 }
+        });
     });
     document.getElementById("closePopupButton").addEventListener("click", () => {
       document.getElementById("sessionPopup").classList.add("hidden");
