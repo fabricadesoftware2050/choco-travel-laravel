@@ -8,6 +8,7 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     * add dev branch
      */
     public function up(): void
     {
