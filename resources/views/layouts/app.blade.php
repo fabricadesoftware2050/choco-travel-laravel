@@ -27,10 +27,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <style>
         body{
             font-family: "Inter", sans-serif;
+        }
+        #map {
+            z-index: 0 !important;
         }
     </style>
 </head>
@@ -42,6 +47,7 @@
 </section>
 @include("inc/footer")
 <!-- En tu src/index.html justo antes del </body> -->
+@yield('js')
 <script type="text/javascript">
     function googleTranslateElementInit() {
 
@@ -57,6 +63,6 @@
     }
 </script>
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
 </html>

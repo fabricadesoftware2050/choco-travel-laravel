@@ -5,11 +5,8 @@
         <img src="{{asset("assets/images/logogober.png")}}" alt="Logo" class="h-8 w-auto" />
     </div>
     <div class="flex gap-4">
-        <a href="#" class="flex items-center gap-2 px-2 rounded-full text-sm hover:bg-white hover:text-blue-900 transition">
-            <i class="fas fa-globe"></i>
-            <span class="hidden sm:inline change-lang__text">Cambiar idioma</span>
+
             <div id="google_translate_element"></div>
-        </a>
     </div>
 </div>
 

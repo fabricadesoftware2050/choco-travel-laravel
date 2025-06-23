@@ -28,10 +28,41 @@
 
 </style>
 <!-- Footer -->
-<footer class="main-footer">
-    © 2025 Plataforma COD - Chocó Open Data. Gobernación del Chocó.
-
-    <div id="google_translate_element"></div>
+<!-- Footer -->
+<footer class="bg-gray-100 py-12">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div>
+            <h4 class="font-bold mb-2">CHOCÓ TRAVEL</h4>
+            <p class="text-sm text-gray-600">Plataforma integral para la promoción turística, experiencias auténticas y desarrollo sostenible del Chocó y Medellín.</p>
+        </div>
+        <div>
+            <h4 class="font-semibold mb-2">Destinos</h4>
+            <ul class="text-sm text-gray-700 space-y-1">
+                <li><a href="#" class="hover:underline">Bahía Solano</a></li>
+                <li><a href="#" class="hover:underline">Nuquí</a></li>
+                <li><a href="#" class="hover:underline">Medellín</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-semibold mb-2">Experiencias</h4>
+            <ul class="text-sm text-gray-700 space-y-1">
+                <li><a href="#" class="hover:underline">Tour Quibdó</a></li>
+                <li><a href="#" class="hover:underline">Avistamiento de ballenas</a></li>
+                <li><a href="#" class="hover:underline">Tour Tutunendo</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-semibold mb-2">Comunidad</h4>
+            <ul class="text-sm text-gray-700 space-y-1">
+                <li><a href="#" class="hover:underline">Recomendaciones</a></li>
+                <li><a href="#" class="hover:underline">Guías locales</a></li>
+                <li><a href="#" class="hover:underline">Ayuda</a></li>
+            </ul>
+        </div>
+    </div>
+<div class="main-footer">
+    © 2025 Plataforma Turística del Chocó | choco.travel | Gobernación del Chocó.
+</div>
 </footer>
 
 
