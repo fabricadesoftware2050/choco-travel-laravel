@@ -228,13 +228,12 @@
     </section>
 
     <!-- Crea tu Borondo -->
-    <section class="bg-teal-50 py-12">
-        <div class="px-4">
+    <section class="max-full  px-4 bg-teal-50">
+        <section class="max-w-7xl mx-auto bg-teal-50 p-5">
 
-                <h2 class="text-xl font-bold mb-2">Crea tu Borondo</h2>
-                <p class="mb-4 text-gray-700">Diseña tu itinerario personalizado combinando destinos, actividades y experiencias en el Chocó.</p>
-        </div>
-        <section class="bg-teal-50">
+        <h2 class="text-xl font-bold mb-2">Crea tu Borondo</h2>
+        <p class="mb-4 text-gray-700">Diseña tu itinerario personalizado combinando destinos, actividades y experiencias en el Chocó.</p>
+
             <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-10 gap-6">
 
                 <!-- Mapa (60%) -->
@@ -325,7 +324,7 @@
 
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 py-12">
+    <section class="max-w-7xl mx-auto px-4 my-4">
         <h2 class="text-xl font-bold mb-6">Lugares Más Visitados los últimos 30 días</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
