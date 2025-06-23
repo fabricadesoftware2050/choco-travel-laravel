@@ -33,14 +33,14 @@
     <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         <div>
             <h4 class="font-bold mb-2">CHOCÓ TRAVEL</h4>
-            <p class="text-sm text-gray-600">Plataforma integral para la promoción turística, experiencias auténticas y desarrollo sostenible del Chocó y Medellín.</p>
+            <p class="text-sm text-gray-600">Plataforma integral para la promoción turística, experiencias auténticas y desarrollo sostenible del Chocó.</p>
         </div>
         <div>
             <h4 class="font-semibold mb-2">Destinos</h4>
             <ul class="text-sm text-gray-700 space-y-1">
                 <li><a href="#" class="hover:underline">Bahía Solano</a></li>
                 <li><a href="#" class="hover:underline">Nuquí</a></li>
-                <li><a href="#" class="hover:underline">Medellín</a></li>
+                <li><a href="#" class="hover:underline">Capurganá</a></li>
             </ul>
         </div>
         <div>
