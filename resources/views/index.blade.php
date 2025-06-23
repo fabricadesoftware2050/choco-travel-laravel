@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Un Borondo por el Chocó')
 @section('content')
+    @include("inc/popup")
     <!-- Hero -->
     <section class="relative hero bg-cover bg-center text-white" style="background-image:url('https://colombiapais.com/pagina-sol-y-playa/playas-mar-pacifico/imagenes/mar-pacifico-nuqui-panoramica-450.jpg');">
         <!-- Overlay oscuro -->

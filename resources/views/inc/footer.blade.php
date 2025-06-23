@@ -32,7 +32,8 @@
 <footer class="bg-gray-100 py-12">
     <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         <div>
-            <h4 class="font-bold mb-2">CHOCÓ TRAVEL</h4>
+            <img src="{{asset("assets/images/icono.png")}}" alt="Logo" class="h-20 w-auto" />
+            <h4 class="font-bold mb-2">Chocó Travel</h4>
             <p class="text-sm text-gray-600">Plataforma integral para la promoción turística, experiencias auténticas y desarrollo sostenible del Chocó.</p>
         </div>
         <div>
