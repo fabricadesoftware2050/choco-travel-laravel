@@ -840,7 +840,6 @@
         <script>
             document.addEventListener("DOMContentLoaded", () => {
 
-
                     confetti({
                         particleCount: 250,
                         spread: 200,

@@ -30,13 +30,9 @@ class AuthController extends Controller
     }
     public function handleGoogleCallback(Request $request)
     {
-        $isnew=false;
          $user = Socialite::driver('google')->user();
 
          $findUser= User::where('google_id', $user->google_id)->first();
-         if(is_null($findUser)){
-             $isnew=true;
-         }
          $user = User::updateOrCreate(
              ['email' => $user->email], // condición de búsqueda
              [
@@ -48,7 +44,11 @@ class AuthController extends Controller
              ]
          );
          Auth::login($user);
-         return redirect(route('home'))->with("nuevo",$isnew);
+         if(is_null($findUser)){
+             return redirect(route('home'))->with("nuevo",true);
+         }
+         return redirect(route('home'));
+
     }
 
     public function register(Request $request)
@@ -67,8 +67,6 @@ class AuthController extends Controller
         ]);
         Auth::login($user);
         return redirect(route('home'))->with("nuevo",true);
-
-
     }
 public function login(Request $request)
     {
