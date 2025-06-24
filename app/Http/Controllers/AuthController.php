@@ -30,24 +30,32 @@ class AuthController extends Controller
     }
     public function handleGoogleCallback(Request $request)
     {
-         $user = Socialite::driver('google')->user();
+        $userData = Socialite::driver('google')->user();
 
-         $findUser= User::where('google_id', $user->google_id)->first();
-         $user = User::updateOrCreate(
-             ['email' => $user->email], // condición de búsqueda
-             [
-                 'name' => $user->name,
-                 'google_id' => $user->id,
-                 'avatar' => $user->avatar,
-                 'ip_register' => $request->ip(),
-                 'email_verified_at' => $user->user['verified_email'] ? date('Y-m-d h:i:s') : null
-             ]
-         );
-         Auth::login($user);
-         if(is_null($findUser)){
-             return redirect(route('home'))->with("nuevo",true);
-         }
-         return redirect(route('home'));
+        $findUser = User::where('google_id', $userData->id)->first();
+        $isNew = !$findUser;
+
+        if ($isNew) {
+            $findUser = new User;
+        }
+
+// Asignar o actualizar campos
+        $findUser->name = $userData->name;
+        $findUser->email = $userData->email;
+        $findUser->google_id = $userData->id;
+        $findUser->avatar = $userData->avatar;
+        $findUser->ip_register = $request->ip();
+        $findUser->email_verified_at = $userData->user['verified_email'] ? now() : null;
+
+// Guardar datos
+        $findUser->save(); // `save()` sirve para ambos casos (nuevo o existente)
+
+// Autenticar usuario
+        Auth::login($findUser);
+
+// Redirigir según si es nuevo
+        return redirect()->route('home')->with('nuevo', $isNew);
+
 
     }
 

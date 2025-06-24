@@ -836,22 +836,19 @@
         });
     </script>
     @if (session('nuevo'))
-        <!-- Script para mostrar una vez -->
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
         <script>
             document.addEventListener("DOMContentLoaded", () => {
-
-                    confetti({
-                        particleCount: 250,
-                        spread: 200,
-                        origin: { y: 0.6 }
-                    });
+                confetti({
+                    particleCount: 250,
+                    spread: 200,
+                    origin: { y: 0.6 }
+                });
             });
-
-
         </script>
-        <!-- CDN de confetti -->
-        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
     @endif
+
+
+
 
 @endsection
