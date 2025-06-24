@@ -73,7 +73,12 @@ public function login(Request $request)
             'email' => 'required|email',
             'password' => 'required', // importante: usa `confirmed`
         ]);
-
+        $findUser= User::where('email', $request->email)->first();
+        if(!is_null($findUser)){
+            return back()->withErrors([
+                'error' => 'Su inicio de sesión es con Google',
+            ])->withInput();
+        }
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended(route('home')); // redirige a la ruta deseada
