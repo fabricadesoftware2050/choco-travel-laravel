@@ -32,20 +32,22 @@ class AuthController extends Controller
     {
         $isnew=false;
          $user = Socialite::driver('google')->user();
+
          $findUser= User::where('google_id', $user->google_id)->first();
-         if(!is_null($findUser)){
-             Auth::login($findUser);
-         }else{
-            $user = User::create([
-                'name' => $user->name,
-                'email' => $user->email,
-                'google_id' => $user->id,
-                'google_avatar' => $user->avatar,
-                'email_verified_at'=> $user->user['verified_email']?date('Y-m-d'):null
-            ]);
-             Auth::login($user);
-             $isnew=true;
+         if(is_null($findUser)){
+            $isnew=true;
          }
+         $user = User::updateOrCreate(
+             ['email' => $user->email], // condición de búsqueda
+             [
+                 'name' => $user->name,
+                 'google_id' => $user->id,
+                 'avatar' => $user->avatar,
+                 'ip_register' => $request->ip(),
+                 'email_verified_at' => $user->user['verified_email'] ? date('Y-m-d h:i:s') : null
+             ]
+         );
+         Auth::login($user);
          return redirect(route('home'))->with("nuevo",$isnew);
     }
 
@@ -60,6 +62,7 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'ip_register' => $request->ip(),
             'password' => Hash::make($request->password), // hashear
         ]);
         Auth::login($user);
@@ -74,7 +77,7 @@ public function login(Request $request)
             'password' => 'required', // importante: usa `confirmed`
         ]);
         $findUser= User::where('email', $request->email)->first();
-        if(!is_null($findUser)){
+        if(!is_null($findUser) && $findUser->google_id != null){
             return back()->withErrors([
                 'error' => 'Su inicio de sesión es con Google',
             ])->withInput();
