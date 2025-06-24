@@ -29,28 +29,45 @@
                     @csrf
                     <div>
                         <label class="block text-gray-700 text-sm font-medium">Nombre completo</label>
-                        <input type="text" placeholder="Tu nombre completo" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        <div class="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
+                            <i class="fas fa-user text-gray-400 mr-2"></i>
+                            <input type="text" placeholder="Tu nombre completo" class="w-full focus:outline-none" />
+                        </div>
                     </div>
+
+
+
                     <div>
                         <label class="block text-gray-700 text-sm font-medium">Correo electrónico</label>
-                        <input type="email" placeholder="tu@correo.com" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        <div class="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
+                            <i class="fas fa-envelope text-gray-400 mr-2"></i>
+                            <input placeholder="Ingrese su correo" type="emal" class="w-full focus:outline-none" />
+                        </div>
                     </div>
                     <div>
                         <label class="block text-gray-700 text-sm font-medium">Contraseña</label>
-                        <input type="password" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        <div class="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
+                            <i class="fas fa-lock text-gray-400 mr-2"></i>
+                            <input placeholder="Mínimo 8 caracteres" type="password" class="w-full focus:outline-none" />
+                        </div>
                     </div>
+
                     <div>
-                        <label class="block text-gray-700 text-sm font-medium">Confirmar contraseña</label>
-                        <input type="password" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        <label class="block text-gray-700 text-sm font-medium">Confirmar Contraseña</label>
+                        <div class="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
+                            <i class="fas fa-lock text-gray-400 mr-2"></i>
+                            <input placeholder="Repita la contraseña" type="password" class="w-full focus:outline-none" />
+                        </div>
                     </div>
+
                     <div class="flex items-center">
                         <input type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
-                        <label class="ml-2 block text-sm text-gray-700">Acepto los <a href="#" class="text-blue-600 underline">términos y condiciones</a></label>
+                        <label class="ml-2 block text-sm text-gray-700">Acepto los <a href="#" class="text-yellow-600 underline">términos y condiciones</a></label>
                     </div>
                     <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Crear cuenta</button>
                 </form>
                 <p class="text-sm text-center mt-4">
-                    ¿Ya tienes una cuenta? <a href="{{route('login')}}" class="text-blue-600 underline">Iniciar sesión</a>
+                    ¿Ya tienes una cuenta? <a href="{{route('login')}}" class="text-yellow-600 underline">Iniciar sesión</a>
                 </p>
                 <div class="mt-4">
                     <button class="w-full border border-gray-300 py-2 rounded-md flex items-center justify-center gap-2 hover:bg-gray-100">

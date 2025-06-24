@@ -30,17 +30,26 @@
 
                     <div>
                         <label class="block text-gray-700 text-sm font-medium">Correo electrónico</label>
-                        <input type="email" placeholder="tu@correo.com" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        <div class="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
+                            <i class="fas fa-envelope text-gray-400 mr-2"></i>
+                            <input placeholder="Ingrese su correo" type="emal" class="w-full focus:outline-none" />
+                        </div>
                     </div>
                     <div>
                         <label class="block text-gray-700 text-sm font-medium">Contraseña</label>
-                        <input type="password" placeholder="Contraseña" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        <div class="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
+                            <i class="fas fa-lock text-gray-400 mr-2"></i>
+                            <input placeholder="Ingrese su contraseña" type="password" class="w-full focus:outline-none" />
+                        </div>
                     </div>
+                    <p class="text-sm text-end mt-4">
+                        <a href="{{route('resetPassword')}}" class="text-yellow-600 underline">Restablecer contraseña</a>
+                    </p>
 
                     <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Acceder</button>
                 </form>
                 <p class="text-sm text-center mt-4">
-                    ¿Aún no tienes una cuenta? <a href="{{route('register')}}" class="text-blue-600 underline">Crear una</a>
+                    ¿Aún no tienes una cuenta? <a href="{{route('register')}}" class="text-yellow-600 underline">Crear una</a>
                 </p>
                 <div class="mt-4">
                     <button class="w-full border border-gray-300 py-2 rounded-md flex items-center justify-center gap-2 hover:bg-gray-100">
@@ -49,7 +58,7 @@
                     </button>
                 </div>
                     <div class="flex items-center mt-3">
-                        <label class="ml-2 block text-sm text-gray-700">Al acceder aceptas los <a href="#" class="text-blue-600 underline">términos y condiciones</a></label>
+                        <label class="ml-2 block text-sm text-gray-700">Al acceder aceptas los <a href="#" class="text-yellow-600 underline">términos y condiciones</a></label>
                     </div>
             </div>
         </div>

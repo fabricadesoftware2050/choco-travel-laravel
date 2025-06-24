@@ -12,3 +12,6 @@ Route::get('acceso', function () {
 Route::get('registro', function () {
     return view('register');
 })->name("register");
+Route::get('reestablecer', function () {
+    return view('resetPassword');
+})->name("resetPassword");
