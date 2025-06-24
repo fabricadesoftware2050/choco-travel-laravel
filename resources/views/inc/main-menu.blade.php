@@ -23,8 +23,13 @@
         <!-- auth -->
         <div class="flex space-x-2 text-sm">
             <div class="fixed bottom-0" id="google_translate_element"></div>
+            @if(auth()->user())
+            <label class="px-4 py-1 bg-emerald-500 rounded">{{auth()->user()->name}}</label>
+            <a href="{{route('logout.user')}}" class="bg-red-500 text-white px-4 py-1 rounded">Cerrar sesión</a>
+            @else
             <a href="{{route('login')}}" class="border px-4 py-1 rounded hover:bg-emerald-500">Iniciar Sesión</a>
             <a href="{{route('register')}}" class="bg-emerald-500 text-white px-4 py-1 rounded hover:bg-emerald-600">Registrarse</a>
+            @endif
         </div>
     </div>
 </header>
