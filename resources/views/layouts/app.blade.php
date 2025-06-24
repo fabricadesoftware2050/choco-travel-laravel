@@ -39,7 +39,7 @@
         }
     </style>
 </head>
-<body>
+<body class="scroll-smooth">
 @include("inc/top")
 @include("inc/main-menu")
 <section class="w-full md:pt-20">

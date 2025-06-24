@@ -3,7 +3,7 @@
 @section('content')
     @include("inc/popup")
     <!-- Hero -->
-    <section class="relative hero bg-cover bg-center text-white" style="background-image:url('https://colombiapais.com/pagina-sol-y-playa/playas-mar-pacifico/imagenes/mar-pacifico-nuqui-panoramica-450.jpg');">
+    <section id="home" class="relative hero bg-cover bg-center text-white" style="background-image:url('https://colombiapais.com/pagina-sol-y-playa/playas-mar-pacifico/imagenes/mar-pacifico-nuqui-panoramica-450.jpg');">
         <!-- Overlay oscuro -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-white z-0"></div>
 
@@ -326,7 +326,7 @@
     </section>
 
     <section class="max-w-7xl mx-auto px-4 my-4">
-        <h2 class="text-xl font-bold mb-6">Lugares Más Visitados los últimos 30 días</h2>
+        <h2 class="text-xl font-bold mb-6">Lo Más Visitado los últimos 30 días</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
             <!-- Card 1 -->
@@ -431,8 +431,367 @@
                 </div>
             </div>
 
+        </div>
+    </section>
 
-            @endsection
+    <!-- Experiencias Recomendadas -->
+    <section class="max-w-7xl mx-auto px-4 py-12">
+        <h2 class="text-xl font-bold mb-6">Experiencias Recomendadas</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+            <!-- Card 1 -->
+            <div class="bg-white border rounded-lg shadow overflow-hidden transform hover:scale-105 transition duration-300 cursor-pointer">
+                <img src="https://radionacional-v3.s3.amazonaws.com/s3fs-public/node/article/field_image/colp_ext_002149.jpg" alt="Graffiti Comuna 13" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg">Tour Atrato</h3>
+                    <p class="text-sm text-gray-600">Recorre los coloridos murales y conoce la transformación social del barrio.</p>
+                    <div class="mt-3 flex items-center justify-between text-sm text-gray-700">
+                        <span><i class="fas fa-users mr-1 text-emerald-500"></i> 8,200 visitantes</span>
+                        <span><i class="fas fa-chart-line mr-1 text-blue-500"></i> +32% este mes</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white border rounded-lg shadow overflow-hidden transform hover:scale-105 transition duration-300 cursor-pointer">
+                <img src="https://visitvalle.travel/wp-content/uploads/2024/08/avistamiento-de-ballenas-jorobadas-en-colombia.webp" alt="Ballenas Nuquí" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg">Avistamiento de ballenas (época)</h3>
+                    <p class="text-sm text-gray-600">Observa estos majestuosos animales desde Nuquí o Bahía Solano.</p>
+                    <div class="mt-3 flex items-center justify-between text-sm text-gray-700">
+                        <span><i class="fas fa-users mr-1 text-emerald-500"></i> 5,400 visitantes</span>
+                        <span><i class="fas fa-chart-line mr-1 text-blue-500"></i> +18% este mes</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white border rounded-lg shadow overflow-hidden transform hover:scale-105 transition duration-300 cursor-pointer">
+                <img src="https://caracol.com.co/resizer/v2/https%3A%2F%2Fcloudfront-us-east-1.images.arcpublishing.com%2Fprisaradioco%2FFEN7X4PSMBOR7CUN2TPET5VI5M.jpg?auth=f10c0a62e098dfe76a402d02b0d14754266f9e0bb99125989f8678c72e33dc14&height=624&width=1080&quality=70&smart=true" alt="Parque Arví" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg">Caminata Tutunendo</h3>
+                    <p class="text-sm text-gray-600">Disfruta las vistas de Tutunendo y relájate en la naturaleza djunto al río.</p>
+                    <div class="mt-3 flex items-center justify-between text-sm text-gray-700">
+                        <span><i class="fas fa-users mr-1 text-emerald-500"></i> 6,900 visitantes</span>
+                        <span><i class="fas fa-chart-line mr-1 text-blue-500"></i> +25% este mes</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Borondos Populares -->
+    <section class="max-w-7xl mx-auto px-4 py-12">
+        <h2 class="text-xl font-bold mb-6">Borondos Populares</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+            <!-- Card 1 -->
+            <div class="bg-white border rounded-lg shadow p-4 hover:shadow-lg transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center">
+                            Quibdó Cultural
+                        </h3>
+                        <p class="text-sm text-gray-600">3 días • 2-4 personas</p>
+                    </div>
+                    <img src="https://www.clarin.com/2024/07/04/uteodLeuh_2000x1500__1.jpg" class="w-16 h-16 object-cover rounded" alt="Miniatura Medellín">
+                </div>
+                <div class="flex justify-between items-center mt-4 text-sm text-gray-700">
+                    <div>
+                        <span class="text-gray-500">Publicado por:</span> <span class="font-semibold">Laura Gómez</span><br>
+                        <span class="text-gray-500">👁️ 1.2K visitas</span>
+                    </div>
+                    <div class="text-yellow-500 text-lg font-semibold">★ 4.9</div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white border rounded-lg shadow p-4 hover:shadow-lg transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center">
+                            Aventura en Nuquí
+                        </h3>
+                        <p class="text-sm text-gray-600">1 día • 2-4 personas</p>
+                    </div>
+                    <img src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/e40b6ea6361a1abe28f32e7910f63b66/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg" class="w-16 h-16 object-cover rounded" alt="Miniatura Nuquí">
+                </div>
+                <div class="flex justify-between items-center mt-4 text-sm text-gray-700">
+                    <div>
+                        <span class="text-gray-500">Publicado por:</span> <span class="font-semibold">Carlos Ruiz</span><br>
+                        <span class="text-gray-500">👁️ 980 visitas</span>
+                    </div>
+                    <div class="text-yellow-500 text-lg font-semibold">★ 4.8</div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white border rounded-lg shadow p-4 hover:shadow-lg transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center">
+                            Vacaciones en Capurganá
+                        </h3>
+                        <p class="text-sm text-gray-600">5 días • 2-4 personas</p>
+                    </div>
+                    <img src="{{asset("assets/images/icono.png")}}" class="w-16 h-16 object-cover rounded" alt="Miniatura Chocó">
+                </div>
+                <div class="flex justify-between items-center mt-4 text-sm text-gray-700">
+                    <div>
+                        <span class="text-gray-500">Publicado por:</span> <span class="font-semibold">María Torres</span><br>
+                        <span class="text-gray-500">👁️ 1.5K visitas</span>
+                    </div>
+                    <div class="text-yellow-500 text-lg font-semibold">★ 4.8</div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="bg-white border rounded-lg shadow p-4 hover:shadow-lg transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center">
+                            Vacaciones en Capurganá
+                        </h3>
+                        <p class="text-sm text-gray-600">5 días • 2-4 personas</p>
+                    </div>
+                    <img src="{{asset("assets/images/icono.png")}}" class="w-16 h-16 object-cover rounded" alt="Miniatura Chocó">
+                </div>
+                <div class="flex justify-between items-center mt-4 text-sm text-gray-700">
+                    <div>
+                        <span class="text-gray-500">Publicado por:</span> <span class="font-semibold">María Torres</span><br>
+                        <span class="text-gray-500">👁️ 1.5K visitas</span>
+                    </div>
+                    <div class="text-yellow-500 text-lg font-semibold">★ 4.8</div>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="bg-white border rounded-lg shadow p-4 hover:shadow-lg transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center">
+                            Vacaciones en Capurganá
+                        </h3>
+                        <p class="text-sm text-gray-600">5 días • 2-4 personas</p>
+                    </div>
+                    <img src="{{asset("assets/images/icono.png")}}" class="w-16 h-16 object-cover rounded" alt="Miniatura Chocó">
+                </div>
+                <div class="flex justify-between items-center mt-4 text-sm text-gray-700">
+                    <div>
+                        <span class="text-gray-500">Publicado por:</span> <span class="font-semibold">María Torres</span><br>
+                        <span class="text-gray-500">👁️ 1.5K visitas</span>
+                    </div>
+                    <div class="text-yellow-500 text-lg font-semibold">★ 4.8</div>
+                </div>
+            </div>
+<!-- Card 6 -->
+            <div class="bg-white border rounded-lg shadow p-4 hover:shadow-lg transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center">
+                            Vacaciones en Capurganá
+                        </h3>
+                        <p class="text-sm text-gray-600">5 días • 2-4 personas</p>
+                    </div>
+                    <img src="{{asset("assets/images/icono.png")}}" class="w-16 h-16 object-cover rounded" alt="Miniatura Chocó">
+                </div>
+                <div class="flex justify-between items-center mt-4 text-sm text-gray-700">
+                    <div>
+                        <span class="text-gray-500">Publicado por:</span> <span class="font-semibold">María Torres</span><br>
+                        <span class="text-gray-500">👁️ 1.5K visitas</span>
+                    </div>
+                    <div class="text-yellow-500 text-lg font-semibold">★ 4.8</div>
+                </div>
+            </div>
+<!-- Card 4 -->
+            <div class="bg-white border rounded-lg shadow p-4 hover:shadow-lg transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center">
+                            Vacaciones en Capurganá
+                        </h3>
+                        <p class="text-sm text-gray-600">5 días • 2-4 personas</p>
+                    </div>
+                    <img src="{{asset("assets/images/icono.png")}}" class="w-16 h-16 object-cover rounded" alt="Miniatura Chocó">
+                </div>
+                <div class="flex justify-between items-center mt-4 text-sm text-gray-700">
+                    <div>
+                        <span class="text-gray-500">Publicado por:</span> <span class="font-semibold">María Torres</span><br>
+                        <span class="text-gray-500">👁️ 1.5K visitas</span>
+                    </div>
+                    <div class="text-yellow-500 text-lg font-semibold">★ 4.8</div>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="bg-white border rounded-lg shadow p-4 hover:shadow-lg transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center">
+                            Vacaciones en Capurganá
+                        </h3>
+                        <p class="text-sm text-gray-600">5 días • 2-4 personas</p>
+                    </div>
+                    <img src="{{asset("assets/images/icono.png")}}" class="w-16 h-16 object-cover rounded" alt="Miniatura Chocó">
+                </div>
+                <div class="flex justify-between items-center mt-4 text-sm text-gray-700">
+                    <div>
+                        <span class="text-gray-500">Publicado por:</span> <span class="font-semibold">María Torres</span><br>
+                        <span class="text-gray-500">👁️ 1.5K visitas</span>
+                    </div>
+                    <div class="text-yellow-500 text-lg font-semibold">★ 4.8</div>
+                </div>
+            </div>
+<!-- Card 6 -->
+            <div class="bg-white border rounded-lg shadow p-4 hover:shadow-lg transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center">
+                            Vacaciones en Capurganá
+                        </h3>
+                        <p class="text-sm text-gray-600">5 días • 2-4 personas</p>
+                    </div>
+                    <img src="{{asset("assets/images/icono.png")}}" class="w-16 h-16 object-cover rounded" alt="Miniatura Chocó">
+                </div>
+                <div class="flex justify-between items-center mt-4 text-sm text-gray-700">
+                    <div>
+                        <span class="text-gray-500">Publicado por:</span> <span class="font-semibold">María Torres</span><br>
+                        <span class="text-gray-500">👁️ 1.5K visitas</span>
+                    </div>
+                    <div class="text-yellow-500 text-lg font-semibold">★ 4.8</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="indicadores" class="bg-gray-900 text-white py-20 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 pt-5">Indicadores Estratégicos del Turismo – Gobernación del Chocó</h2>
+
+            <!-- Primer bloque de estadísticas resumidas -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center mb-16">
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg hover:scale-105 transform transition duration-300">
+                    <div class="text-4xl font-bold text-teal-400">+120K</div>
+                    <p class="mt-2 text-gray-300">Proyección de Visitantes</p>
+                    <p class="text-sm text-teal-300 mt-1">+35% vs. 2024</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg hover:scale-105 transform transition duration-300">
+                    <div class="text-4xl font-bold text-yellow-400">$5.4M</div>
+                    <p class="mt-2 text-gray-300">Gasto público en turismo</p>
+                    <p class="text-sm text-yellow-300 mt-1">Inversión total 2025</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg hover:scale-105 transform transition duration-300">
+                    <div class="text-4xl font-bold text-green-400">$9.6M</div>
+                    <p class="mt-2 text-gray-300">Ganancias esperadas</p>
+                    <p class="text-sm text-green-300 mt-1">Por turismo formal</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg hover:scale-105 transform transition duration-300">
+                    <div class="text-4xl font-bold text-pink-400">15</div>
+                    <p class="mt-2 text-gray-300">Municipios turísticos activos</p>
+                    <p class="text-sm text-pink-300 mt-1">Nuquí, Quibdó, Bahía Solano…</p>
+                </div>
+            </div>
+
+            <!-- Segundo bloque de tablero con más detalle -->
+            <div class="bg-gray-800 rounded-xl shadow-xl overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-700 text-center">
+
+                    <!-- Duración promedio -->
+                    <div class="p-6 hover:bg-gray-700 transition duration-300">
+                        <p class="text-sm uppercase text-gray-400">Duración promedio</p>
+                        <div class="text-3xl font-semibold text-blue-400 mt-2">4.2 días</div>
+                        <p class="text-xs text-blue-300 mt-1">Por visitante</p>
+                    </div>
+
+                    <!-- Operadores turísticos -->
+                    <div class="p-6 hover:bg-gray-700 transition duration-300">
+                        <p class="text-sm uppercase text-gray-400">Operadores registrados</p>
+                        <div class="text-3xl font-semibold text-orange-400 mt-2">89</div>
+                        <p class="text-xs text-orange-300 mt-1">Agencias, guías, ecohostales</p>
+                    </div>
+
+                    <!-- Visitantes extranjeros -->
+                    <div class="p-6 hover:bg-gray-700 transition duration-300">
+                        <p class="text-sm uppercase text-gray-400">Visitantes internacionales</p>
+                        <div class="text-3xl font-semibold text-indigo-400 mt-2">21%</div>
+                        <p class="text-xs text-indigo-300 mt-1">EE.UU, Alemania, Francia</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-700 text-center">
+                    <!-- Ingresos por tipo de experiencia -->
+                    <div class="p-6 hover:bg-gray-700 transition duration-300">
+                        <p class="text-sm uppercase text-gray-400">Top categorías</p>
+                        <div class="text-3xl font-semibold text-cyan-400 mt-2">Eco • Mar • Cultura</div>
+                        <p class="text-xs text-cyan-300 mt-1">Playas, senderismo, historia</p>
+                    </div>
+
+                    <!-- Valor agregado proyectado -->
+                    <div class="p-6 hover:bg-gray-700 transition duration-300">
+                        <p class="text-sm uppercase text-gray-400">Valor agregado proyectado</p>
+                        <div class="text-3xl font-semibold text-lime-400 mt-2">$2.3M</div>
+                        <p class="text-xs text-lime-300 mt-1">En comercio local y empleo</p>
+                    </div>
+
+                    <!-- Eventos programados 2025 -->
+                    <div class="p-6 hover:bg-gray-700 transition duration-300">
+                        <p class="text-sm uppercase text-gray-400">Eventos 2025</p>
+                        <div class="text-3xl font-semibold text-red-400 mt-2">37</div>
+                        <p class="text-xs text-red-300 mt-1">Carnavales, festivales, ferias</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloque: Apoyo de la Gobernación al Turismo -->
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+
+                <!-- Programas activos -->
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg hover:bg-gray-700 transition">
+                    <div class="text-3xl font-bold text-amber-400">12</div>
+                    <p class="mt-2 text-gray-300">Programas de fomento al turismo</p>
+                    <p class="text-sm text-amber-300 mt-1">Infraestructura, promoción, formación</p>
+                </div>
+
+                <!-- Operadores capacitados -->
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg hover:bg-gray-700 transition">
+                    <div class="text-3xl font-bold text-sky-400">+320</div>
+                    <p class="mt-2 text-gray-300">Operadores capacitados 2024-25</p>
+                    <p class="text-sm text-sky-300 mt-1">Cursos, talleres, certificaciones</p>
+                </div>
+
+                <!-- Créditos entregados -->
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg hover:bg-gray-700 transition">
+                    <div class="text-3xl font-bold text-violet-400">$950K</div>
+                    <p class="mt-2 text-gray-300">Créditos turísticos entregados</p>
+                    <p class="text-sm text-violet-300 mt-1">Para ecohostales, agencias y emprendimientos</p>
+                </div>
+
+                <!-- Eventos institucionales -->
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg hover:bg-gray-700 transition">
+                    <div class="text-3xl font-bold text-rose-400">8</div>
+                    <p class="mt-2 text-gray-300">Foros y ruedas de negocio</p>
+                    <p class="text-sm text-rose-300 mt-1">Con aliados como Fontur y MinComercio</p>
+                </div>
+
+                <!-- Alianzas estratégicas -->
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg hover:bg-gray-700 transition">
+                    <div class="text-3xl font-bold text-lime-400">6</div>
+                    <p class="mt-2 text-gray-300">Convenios activos con aliados</p>
+                    <p class="text-sm text-lime-300 mt-1">Universidades, SENA, ONGs, agencias</p>
+                </div>
+
+                <!-- Subsidios e incentivos -->
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg hover:bg-gray-700 transition">
+                    <div class="text-3xl font-bold text-fuchsia-400">+80</div>
+                    <p class="mt-2 text-gray-300">Operadores con incentivos activos</p>
+                    <p class="text-sm text-fuchsia-300 mt-1">Subsidios para promoción y logística</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+@endsection
 @section("js")
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
@@ -464,6 +823,17 @@
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
+    </script>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
     </script>
 
 @endsection

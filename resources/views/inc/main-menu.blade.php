@@ -4,18 +4,21 @@
         <!-- logo -->
         <div class="flex items-center space-x-2 text-white font-bold text-lg">
             <img src="{{asset("assets/images/logogober.png")}}" alt="Logo" class="h-8 w-auto" />
-            <img src="{{asset("assets/images/icono.png")}}" alt="Logo" class="h-10 w-auto" />
-Chocó Travel
+            <a href="{{ request()->routeIs('home')?"#home":route('home') }}" class="flex items-center space-x-0" title="Ir a Inicio">
+                <img src="{{ asset('assets/images/icono.png') }}" alt="Logo" class="h-10 w-auto" />
+                <span class="font-semibold text-lg">Chocó Travel</span>
+            </a>
+
         </div>
         <!-- navegación -->
         <nav class="hidden lg:flex space-x-6 text-sm">
+            <a href="{{request()->routeIs('home')?"#home":route('home')}}" class="{{ request()->routeIs('home') ? 'text-teal-600 font-semibold' : 'hover:text-teal-600' }}">
+                Inicio
+            </a>
             <a href="#" class="hover:text-teal-600">Destinos</a>
             <a href="#" class="hover:text-teal-600">Borondos</a>
             <a href="#" class="hover:text-teal-600">Guías y Comercios</a>
-            <a href="#" class="hover:text-teal-600">Ranking</a>
-            <button class="p-1 rounded hover:bg-gray-100">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24"><path d="M12 4v1.79l3.71 3.71-1.42 1.42L12 8.63 9.71 10.92 8.29 9.5 12 5.79V4m0 16v-1.79l-3.71-3.71 1.42-1.42L12 15.37l2.29-2.29 1.42 1.42L12 18.21V20z" fill="currentColor"/></svg>
-            </button>
+            <a href="#indicadores" class="hover:text-teal-600">Indicadores</a>
         </nav>
         <!-- auth -->
         <div class="flex space-x-2 text-sm">
