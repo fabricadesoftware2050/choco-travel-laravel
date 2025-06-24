@@ -23,7 +23,7 @@
         <!-- auth -->
         <div class="flex space-x-2 text-sm">
             <div class="fixed bottom-0" id="google_translate_element"></div>
-            <button class="border px-4 py-1 rounded hover:bg-emerald-500">Iniciar Sesión</button>
+            <a href="{{route('login')}}" class="border px-4 py-1 rounded hover:bg-emerald-500">Iniciar Sesión</a>
             <button class="bg-emerald-500 text-white px-4 py-1 rounded hover:bg-emerald-600">Registrarse</button>
         </div>
     </div>
