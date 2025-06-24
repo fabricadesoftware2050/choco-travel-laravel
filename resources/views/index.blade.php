@@ -838,7 +838,7 @@
     @if (session('nuevo'))
         <!-- Script para mostrar una vez -->
         <script>
-
+            document.addEventListener("DOMContentLoaded", () => {
 
 
                     confetti({
@@ -846,6 +846,7 @@
                         spread: 200,
                         origin: { y: 0.6 }
                     });
+            });
 
 
         </script>
