@@ -35,7 +35,7 @@ class AuthController extends Controller
 
          $findUser= User::where('google_id', $user->google_id)->first();
          if(is_null($findUser)){
-            $isnew=true;
+             $isnew=true;
          }
          $user = User::updateOrCreate(
              ['email' => $user->email], // condición de búsqueda
