@@ -25,7 +25,7 @@
                 <p class="text-sm text-center text-gray-600 mb-6">
                     Regístrate para crear experiencias, comunicarte con guías turisticos, guardar destinos favoritos y más
                 </p>
-                <form method="post" action="{{route('login')}}" class="space-y-4">
+                <form method="post" action="{{route('register')}}" class="space-y-4">
                     @csrf
                     <div>
                         <label class="block text-gray-700 text-sm font-medium">Nombre completo</label>
