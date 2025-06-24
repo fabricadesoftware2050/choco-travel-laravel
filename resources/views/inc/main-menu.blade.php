@@ -15,10 +15,10 @@
             <a href="{{request()->routeIs('home')?"#home":route('home')}}" class="{{ request()->routeIs('home') ? 'text-teal-600 font-semibold' : 'hover:text-teal-600' }}">
                 Inicio
             </a>
+            <a href="#indicadores" class="hover:text-teal-600">Indicadores</a>
             <a href="#" class="hover:text-teal-600">Destinos</a>
             <a href="#" class="hover:text-teal-600">Borondos</a>
             <a href="#" class="hover:text-teal-600">Guías y Comercios</a>
-            <a href="#indicadores" class="hover:text-teal-600">Indicadores</a>
         </nav>
         <!-- auth -->
         <div class="flex space-x-2 text-sm">
