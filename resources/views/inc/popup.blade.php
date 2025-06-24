@@ -13,6 +13,12 @@
 <!-- Script para mostrar una vez -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+      const lastShown = localStorage.getItem("popupLastShown");
+      const now = new Date();
+
+      if (!lastShown || now - new Date(lastShown) > 24 * 60 * 60 * 1000) {
+          document.getElementById("sessionPopup").classList.remove("hidden");
+      }
     if (!localStorage.getItem("popupShown")) {
       document.getElementById("sessionPopup").classList.remove("hidden");
         // Lanzar confetti
@@ -25,6 +31,7 @@
 
     document.getElementById("closePopup").addEventListener("click", () => {
       document.getElementById("sessionPopup").classList.add("hidden");
+        localStorage.setItem("popupLastShown", new Date().toISOString());
       localStorage.setItem("popupShown", "true");
         confetti({
             particleCount: 250,
@@ -34,6 +41,7 @@
     });
     document.getElementById("closePopupButton").addEventListener("click", () => {
       document.getElementById("sessionPopup").classList.add("hidden");
+        localStorage.setItem("popupLastShown", new Date().toISOString());
       localStorage.setItem("popupShown", "true");
         confetti({
             particleCount: 250,
