@@ -1,6 +1,6 @@
 <!-- Barra superior -->
 <header class="fixed top-8 left-0 w-full z-50 bg-yellow-500 text-white backdrop-blur-sm shadow-sm">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-1">
         <!-- logo -->
         <div class="flex items-center space-x-2 text-white font-bold text-lg">
             <img src="{{asset("assets/images/logogober.png")}}" alt="Logo" class="h-8 w-auto" />
