@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Inicio de Sesión')
+@section('title', 'Crear Cuenta')
 @section('content')
     @include("inc/popup")
     <div class="min-h-screen flex items-center justify-center bg-yellow-400 bg-opacity-80 px-4 py-8">
@@ -21,26 +21,36 @@
 
             <!-- Formulario a la derecha -->
             <div class="w-full md:w-1/2 p-6">
-                <h2 class="text-2xl font-bold text-center mb-4">Inicio de sesión</h2>
+                <h2 class="text-2xl font-bold text-center mb-4">Crear cuenta</h2>
                 <p class="text-sm text-center text-gray-600 mb-6">
-                    Accede para crear experiencias, comunicarte con guías turisticos, guardar destinos favoritos y más
+                    Regístrate para crear experiencias, comunicarte con guías turisticos, guardar destinos favoritos y más
                 </p>
                 <form method="post" action="{{route('login')}}" class="space-y-4">
                     @csrf
-
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium">Nombre completo</label>
+                        <input type="text" placeholder="Tu nombre completo" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
                     <div>
                         <label class="block text-gray-700 text-sm font-medium">Correo electrónico</label>
                         <input type="email" placeholder="tu@correo.com" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
                     <div>
                         <label class="block text-gray-700 text-sm font-medium">Contraseña</label>
-                        <input type="password" placeholder="Contraseña" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        <input type="password" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
-
-                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Acceder</button>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium">Confirmar contraseña</label>
+                        <input type="password" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
+                        <label class="ml-2 block text-sm text-gray-700">Acepto los <a href="#" class="text-blue-600 underline">términos y condiciones</a></label>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Crear cuenta</button>
                 </form>
                 <p class="text-sm text-center mt-4">
-                    ¿Aún no tienes una cuenta? <a href="{{route('register')}}" class="text-blue-600 underline">Crear una</a>
+                    ¿Ya tienes una cuenta? <a href="{{route('login')}}" class="text-blue-600 underline">Iniciar sesión</a>
                 </p>
                 <div class="mt-4">
                     <button class="w-full border border-gray-300 py-2 rounded-md flex items-center justify-center gap-2 hover:bg-gray-100">
@@ -48,9 +58,6 @@
                         Continuar con Google
                     </button>
                 </div>
-                    <div class="flex items-center mt-3">
-                        <label class="ml-2 block text-sm text-gray-700">Al acceder aceptas los <a href="#" class="text-blue-600 underline">términos y condiciones</a></label>
-                    </div>
             </div>
         </div>
     </div>
