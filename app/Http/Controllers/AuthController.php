@@ -78,7 +78,7 @@ class AuthController extends Controller
             'token_account_verified' => $uuid = Str::uuid(),
             'password' => Hash::make($request->password), // hashear
         ]);
-        Mail::to($request->email)->send(new SendWelcomeMail($request->name,"https://chocotravel.travel/verify?id=".$uuid));
+        Mail::to($request->email)->send(new SendWelcomeMail($request->name,$request->email,"https://chocotravel.travel/verify?id=".$uuid));
         //return 'Correo de bienvenida enviado.';
         Auth::login($user);
         return redirect(route('home'))->with("nuevo",true);
