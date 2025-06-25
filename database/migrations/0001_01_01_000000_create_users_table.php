@@ -20,9 +20,12 @@ return new class extends Migration
             $table->string('dni')->nullable();
             $table->string('dni_type')->nullable();
             $table->string('country')->nullable();
-            $table->longText('image')->nullable();
+            $table->longText('avatar')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->longText('token_account_verified')->nullable();
+            $table->string('password')->nullable();
+            $table->string('google_id')->nullable();
+            $table->string('ip_register')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
