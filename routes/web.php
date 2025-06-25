@@ -12,3 +12,9 @@ Route::post('registro', [AuthController::class,'register'])->name("auth.register
 Route::get('reestablecer', function () { return view('resetPassword'); })->name("resetPassword");
 Route::get('auth/google', [AuthController::class,'redirectGoogle'])->name("redirect.google");
 Route::get('auth/google/callback', [AuthController::class,'handleGoogleCallback']);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/resend-verification', [AuthController::class, 'resendEmailVerifyAccount'])->name('resend.verification');
+    Route::get('/verify', [AuthController::class, 'verifyAccount'])->name('verify.account');
+});
+

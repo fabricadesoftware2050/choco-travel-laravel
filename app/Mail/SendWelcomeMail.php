@@ -16,8 +16,9 @@ class SendWelcomeMail extends Mailable
     public string $url_verify;
     public string $email;
 
-    public function __construct($name,$email,$url_verify)
+    public function __construct($subject,$name,$email,$url_verify)
     {
+        $this->subject = $subject;
         $this->name = $name;
         $this->url_verify = $url_verify;
         $this->email = $email;
@@ -26,7 +27,7 @@ class SendWelcomeMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '¡Bienvenido a Chocó Travel!',
+            subject: $this->subject??'¡Bienvenido a Chocó Travel!',
         );
     }
 
