@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendResetPasswordMail;
 use App\Mail\SendWelcomeMail;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -113,6 +114,80 @@ class AuthController extends Controller
         $user->save();
 
         return view('auth.verify-sent');
+    }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            '_token_request' => 'required|string',
+            'password' => 'required|string|min:8|confirmed', // importante: usa `confirmed`
+        ]);
+        $findUser = User::where('token_reset_password', $request->input('_token_request'))->first();
+        if(!is_null($findUser) && $findUser->google_id != null){
+            return back()->withErrors([
+                'error' => 'Su inicio de sesión es con Google',
+            ])->withInput();
+        }
+        if($findUser){
+            $findUser->token_reset_password = null;
+            $findUser->verification_sent_mail_at = now(); // Actualiza el tiempo del último envío
+            $findUser->password = Hash::make($request->password);
+            $findUser->save();
+            return redirect(route('login'))->with("repass","Inicie sesión con su nueva contraseña.");
+        }else{
+            return view('auth.change-password')->with('error', 'Enlace o token expirado.');
+        }
+
+    }
+    public function changePasswordForm(Request $request)
+    {
+        $findUser = User::where('token_reset_password', $request->input('token'))->first();
+        if(!is_null($findUser) && $findUser->google_id != null){
+            return back()->withErrors([
+                'error' => 'Su inicio de sesión es con Google',
+            ])->withInput();
+        }
+        if($findUser){
+            return view('auth.change-password',['name'=>$findUser->name,'token'=>$request->input('token')]);
+        }else{
+            return redirect(route('resetPassword'))->with('error', 'Enlace o token expirado.');
+        }
+
+    }
+    public function sendEmailResetPassword(Request $request)
+    {
+        $findUser = User::where('email', $request->input('email'))->first();
+        if(!is_null($findUser) && $findUser->google_id != null){
+            return back()->withErrors([
+                'error' => 'Su inicio de sesión es con Google',
+            ])->withInput();
+        }
+        if($findUser){
+            $ultimaVerificacion = Carbon::parse($findUser->verification_sent_mail_at);
+
+            $minutos = $ultimaVerificacion->diffInMinutes(now());
+            // Bloquear reenvío si ya lo hizo hace menos de 3 minutos
+            // Limitar a 1 intento cada 3 minutos
+            if ($minutos < 3) {
+                return back()->with('error', 'El enlace ya fue enviado, debes esperar unos minutos antes de reenviar el correo.');
+            }
+            $findUser->token_reset_password = $uuid = Str::uuid();
+            $findUser->verification_sent_mail_at = now(); // Actualiza el tiempo del último envío
+            Mail::to($findUser->email)->send(new SendResetPasswordMail("¡Verificar cuenta!",$findUser->name,$findUser->email,route('reset.password')."?token=".$uuid));
+            $findUser->save();
+            return view('auth.password-reset-sent',['email'=>$request->input('email')]);
+        }else{
+            return back()->with('error', 'No existe una cuenta con el correo indicado.');
+        }
+
+
+
+
+
+
+
+
+
     }
 
     public function verifyAccount(Request $request)
