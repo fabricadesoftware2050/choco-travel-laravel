@@ -169,11 +169,11 @@ class AuthController extends Controller
             // Bloquear reenvío si ya lo hizo hace menos de 3 minutos
             // Limitar a 1 intento cada 3 minutos
             if ($minutos < 3) {
-                return back()->with('error', 'El enlace ya fue enviado, debes esperar unos minutos antes de reenviar el correo.');
+                return back()->with('error', 'El enlace ya fue enviado, debes esperar unos minutos ya que has hecho varias solicitudes.');
             }
             $findUser->token_reset_password = $uuid = Str::uuid();
             $findUser->verification_sent_mail_at = now(); // Actualiza el tiempo del último envío
-            Mail::to($findUser->email)->send(new SendResetPasswordMail("¡Verificar cuenta!",$findUser->name,$findUser->email,route('reset.password')."?token=".$uuid));
+            Mail::to($findUser->email)->send(new SendResetPasswordMail("¡Restablecer contraseña!",$findUser->name,$findUser->email,route('reset.password')."?token=".$uuid));
             $findUser->save();
             return view('auth.password-reset-sent',['email'=>$request->input('email')]);
         }else{
