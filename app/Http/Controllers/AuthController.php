@@ -173,7 +173,7 @@ class AuthController extends Controller
             }
             $findUser->token_reset_password = $uuid = Str::uuid();
             $findUser->verification_sent_mail_at = now(); // Actualiza el tiempo del último envío
-            Mail::to($findUser->email)->send(new SendResetPasswordMail("¡Verificar cuenta!",$findUser->name,$findUser->email,route('reset.password')."?token=".$uuid));
+            Mail::to($findUser->email)->send(new SendResetPasswordMail("¡Restablecer contraseña!",$findUser->name,$findUser->email,route('reset.password')."?token=".$uuid));
             $findUser->save();
             return view('auth.password-reset-sent',['email'=>$request->input('email')]);
         }else{
