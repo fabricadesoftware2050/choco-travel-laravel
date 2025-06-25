@@ -38,7 +38,7 @@
                         <p style="margin-bottom: 20px; text-align:center">Necesitamos que verifiques tu cuenta.</p>
 
                         <!-- Botón -->
-                        <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 20px auto;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 0px auto;">
                             <tr>
                                 <td align="center" bgcolor="#00b19d" style="border-radius:5px;">
                                     <a href="{{ $url_verify }}" target="_blank" style="display:inline-block; padding:12px 30px; font-size:14px; color:#ffffff; text-decoration:none; font-weight:bold;">
@@ -49,12 +49,15 @@
                         </table>
                     </td>
                 </tr>
+                <tr>
+                    <td align="center" style="padding: 30px 40px; color:#666; font-size:15px;">O pega este enlace en tu navegador: {{ $url_verify }}</td>
+                </tr>
 
                 <!-- Pie de página -->
                 <tr>
                     <td style="text-align:center; padding:20px 0; border-top:1px solid #ededed;">
 
-                            <img src="https://choco.travel/assets/images/logogober.png" alt="Gobernación del Chocó" width="140" style="display:block; margin:auto;">
+                        <img src="https://choco.travel/assets/images/logogober.png" alt="Gobernación del Chocó" width="140" style="display:block; margin:auto;">
 
                     </td>
                 </tr>
