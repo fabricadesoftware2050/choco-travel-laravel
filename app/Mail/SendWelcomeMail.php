@@ -27,7 +27,7 @@ class SendWelcomeMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: $this->subject??'¡Bienvenido a Chocó Travel!',
+            subject: $this->subject??'¡Bienvenid@ a Chocó Travel!',
         );
     }
 
