@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
+
 
 class AuthController extends Controller
 {
@@ -47,6 +49,7 @@ class AuthController extends Controller
         $findUser->email = $userData->email;
         $findUser->google_id = $userData->id;
         $findUser->avatar = $userData->avatar;
+        $findUser->verification_sent_mail_at = now();
         $findUser->ip_register = $request->ip();
         $findUser->email_verified_at = $userData->user['verified_email'] ? now() : null;
         $findUser->token_account_verified = $userData->user['verified_email'] ? Str::uuid() : null;
@@ -76,12 +79,58 @@ class AuthController extends Controller
             'email' => $request->email,
             'ip_register' => $request->ip(),
             'token_account_verified' => $uuid = Str::uuid(),
+            'verification_sent_mail_at' => now(), // Actualiza el tiempo del último envío
             'password' => Hash::make($request->password), // hashear
         ]);
-        Mail::to($request->email)->send(new SendWelcomeMail($request->name,$request->email,"https://chocotravel.travel/verify?id=".$uuid));
+        Mail::to($request->email)->send(new SendWelcomeMail("¡Bienvenido a Chocó Travel!",$request->name,$request->email,"https://chocotravel.travel/".route('verify.account')."?id=".$uuid));
         //return 'Correo de bienvenida enviado.';
         Auth::login($user);
         return redirect(route('home'))->with("nuevo",true);
+    }
+
+    public function resendEmailVerifyAccount(Request $request)
+    {
+
+        $user = Auth::user();
+        $ultimaVerificacion = Carbon::parse($user->verification_sent_mail_at);
+        $minutos = $ultimaVerificacion->diffInMinutes(now());
+
+
+        // Bloquear reenvío si ya lo hizo hace menos de 5 minutos
+        // Limitar a 1 intento cada 3 minutos
+        if ($minutos < 3) {
+            return back()->with('error', 'El enlace ya fue enviado, debes esperar unos minutos antes de reenviar el correo.');
+        }
+
+        // Generar nuevo token UUID
+        $uuid = Str::uuid();
+        $user->token_account_verified = $uuid;
+        $user->verification_sent_mail_at = now(); // Actualiza el tiempo del último envío
+
+
+        Mail::to($user->email)->send(new SendWelcomeMail("¡Verificar cuenta!",$user->name,$user->email,"https://chocotravel.travel/".route('verify.account')."?id=".$uuid));
+        $user->save();
+
+        return view('auth.verify-sent');
+    }
+
+    public function verifyAccount(Request $request)
+    {
+
+        $user = Auth::user();
+
+        if ($user->email_verified_at !=null) {
+            return back()->with('message', 'Su cuenta ya fue verificada.');
+        }
+        if($user->token_account_verified==$request->input('verify')){
+            $user->email_verified_at = now(); // Actualiza el tiempo
+            $user->save();
+            return view('auth.verified');
+        }else{
+            return back()->with('error', 'El token generado no es correcto, por favor intente con el más reciente.');
+        }
+
+
     }
 public function login(Request $request)
     {
