@@ -82,7 +82,7 @@ class AuthController extends Controller
             'verification_sent_mail_at' => now(), // Actualiza el tiempo del último envío
             'password' => Hash::make($request->password), // hashear
         ]);
-        Mail::to($request->email)->send(new SendWelcomeMail("¡Bienvenido a Chocó Travel!",$request->name,$request->email,"https://chocotravel.travel/".route('verify.account')."?id=".$uuid));
+        Mail::to($request->email)->send(new SendWelcomeMail("¡Bienvenido a Chocó Travel!",$request->name,$request->email,route('verify.account')."?token=".$uuid));
         //return 'Correo de bienvenida enviado.';
         Auth::login($user);
         return redirect(route('home'))->with("nuevo",true);
@@ -108,7 +108,7 @@ class AuthController extends Controller
         $user->verification_sent_mail_at = now(); // Actualiza el tiempo del último envío
 
 
-        Mail::to($user->email)->send(new SendWelcomeMail("¡Verificar cuenta!",$user->name,$user->email,"https://chocotravel.travel/".route('verify.account')."?id=".$uuid));
+        Mail::to($user->email)->send(new SendWelcomeMail("¡Verificar cuenta!",$user->name,$user->email,route('verify.account')."?token=".$uuid));
         $user->save();
 
         return view('auth.verify-sent');
@@ -122,7 +122,7 @@ class AuthController extends Controller
         if ($user->email_verified_at !=null) {
             return back()->with('message', 'Su cuenta ya fue verificada.');
         }
-        if($user->token_account_verified==$request->input('verify')){
+        if($user->token_account_verified==$request->input('token')){
             $user->email_verified_at = now(); // Actualiza el tiempo
             $user->save();
             return view('auth.verified');
