@@ -82,7 +82,7 @@ class AuthController extends Controller
             'verification_sent_mail_at' => now(), // Actualiza el tiempo del último envío
             'password' => Hash::make($request->password), // hashear
         ]);
-        Mail::to($request->email)->send(new SendWelcomeMail("¡Bienvenido a Chocó Travel!",$request->name,$request->email,"https://chocotravel.travel/".route('verify.account')."?id=".$uuid));
+        Mail::to($request->email)->send(new SendWelcomeMail("¡Bienvenido a Chocó Travel!",$request->name,$request->email,route('verify.account')."?id=".$uuid));
         //return 'Correo de bienvenida enviado.';
         Auth::login($user);
         return redirect(route('home'))->with("nuevo",true);
@@ -108,7 +108,7 @@ class AuthController extends Controller
         $user->verification_sent_mail_at = now(); // Actualiza el tiempo del último envío
 
 
-        Mail::to($user->email)->send(new SendWelcomeMail("¡Verificar cuenta!",$user->name,$user->email,"https://chocotravel.travel/".route('verify.account')."?id=".$uuid));
+        Mail::to($user->email)->send(new SendWelcomeMail("¡Verificar cuenta!",$user->name,$user->email,route('verify.account')."?id=".$uuid));
         $user->save();
 
         return view('auth.verify-sent');
