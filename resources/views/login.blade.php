@@ -34,6 +34,13 @@
                         </ul>
                     </div>
                 @endif
+                @if (session("repass"))
+                    <div class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded mb-4">
+                        <ul class="list-disc pl-5">
+                                <li>{{ session("repass") }}</li>
+                        </ul>
+                    </div>
+                @endif
                 <form method="post" action="{{route('auth.login')}}" class="space-y-4">
                     @csrf
 
