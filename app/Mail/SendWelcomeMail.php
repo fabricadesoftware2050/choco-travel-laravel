@@ -14,11 +14,13 @@ class SendWelcomeMail extends Mailable
 
     public string $name;
     public string $url_verify;
+    public string $email;
 
-    public function __construct($name,$url_verify)
+    public function __construct($name,$email,$url_verify)
     {
         $this->name = $name;
         $this->url_verify = $url_verify;
+        $this->email = $email;
     }
 
     public function envelope(): Envelope
