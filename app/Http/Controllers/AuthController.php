@@ -54,7 +54,7 @@ class AuthController extends Controller
         $findUser->email_verified_at = $userData->user['verified_email'] ? now() : null;
         $findUser->token_account_verified = $userData->user['verified_email'] ? Str::uuid() : null;
 
-        Mail::to($findUser->email)->send(new SendWelcomeMail("¡Bienvenid@ a Nuestra Comunidad!",$findUser->name,$findUser->email,null));
+        Mail::to($findUser->email)->send(new SendWelcomeMail("¡Bienvenid@ a Nuestra Comunidad!",$findUser->name,$findUser->email,""));
 // Guardar datos
         $findUser->save(); // `save()` sirve para ambos casos (nuevo o existente)
 
