@@ -53,9 +53,9 @@
                 <!-- Pie de página -->
                 <tr>
                     <td style="text-align:center; padding:20px 0; border-top:1px solid #ededed;">
-                        <a href="https://www.alegra.com/" target="_blank">
+
                             <img src="https://choco.travel/assets/images/logogober.png" alt="Gobernación del Chocó" width="140" style="display:block; margin:auto;">
-                        </a>
+
                     </td>
                 </tr>
             </table>
