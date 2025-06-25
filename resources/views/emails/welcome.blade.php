@@ -19,8 +19,10 @@
                                     <img src="https://choco.travel/assets/images/logo2.png" alt="Chocó Travel" width="180" style="display:block;">
                                 </td>
                                 <td width="50%" align="right">
-                                    <h2 style="margin:0; font-size:18px; color:#333;">Verifica tu cuenta</h2>
-                                    <p style="margin:4px 0; font-size:12px; color:#555;">Correo: {{ $email }}</p>
+                                    <h2 style="margin:0; font-size:18px; color:#333;">{{ $url_verify ?'Verifica tu cuenta': 'Ya estas verificado' }}</h2>
+                                    <p style="margin:4px 0; font-size:12px; color:#555;">
+                                        Correo: {{ $email ?? 'correo no disponible' }}
+                                    </p>
                                 </td>
                             </tr>
                         </table>
@@ -31,34 +33,39 @@
                 <tr>
                     <td style="padding: 30px 40px; color:#666; font-size:15px;">
                         <p style="margin-bottom: 20px;">
-                            <strong>¡Hola, {{ strtoupper($name) }}!</strong><br><br>
+                            <strong>¡Hola, {{ strtoupper($name ?? 'Usuario') }}!</strong><br><br>
                             Gracias por hacer parte de <strong>CHOCÓ TRAVEL</strong>.
                         </p>
 
-                        <p style="margin-bottom: 20px; text-align:center">Necesitamos que verifiques tu cuenta.</p>
+                        <p style="margin-bottom: 20px; text-align:center">
+                            {{ isset($url_verify) ? 'Necesitamos que verifiques tu cuenta.' : 'Bienvenido a nuestra comunidad.' }}
+                        </p>
 
                         <!-- Botón -->
                         <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 0px auto;">
                             <tr>
                                 <td align="center" bgcolor="#00b19d" style="border-radius:5px;">
-                                    <a href="{{ $url_verify }}" target="_blank" style="display:inline-block; padding:12px 30px; font-size:14px; color:#ffffff; text-decoration:none; font-weight:bold;">
-                                        VERIFICAR MI CUENTA
+                                    <a href="{{ $url_verify ?? 'https://choco.travel' }}" target="_blank" style="display:inline-block; padding:12px 30px; font-size:14px; color:#ffffff; text-decoration:none; font-weight:bold;">
+                                        {{ isset($url_verify) ? 'VERIFICAR MI CUENTA' : 'IR A CHOCÓ TRAVEL' }}
                                     </a>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
-                <tr>
-                    <td align="center" style="padding: 30px 40px; color:#666; font-size:15px;">O pega este enlace en tu navegador: {{ $url_verify }}</td>
-                </tr>
+
+                @if(isset($url_verify))
+                    <tr>
+                        <td align="center" style="padding: 30px 40px; color:#666; font-size:15px;">
+                            O pega este enlace en tu navegador: {{ $url_verify }}
+                        </td>
+                    </tr>
+                @endif
 
                 <!-- Pie de página -->
                 <tr>
                     <td style="text-align:center; padding:20px 0; border-top:1px solid #ededed;">
-
                         <img src="https://choco.travel/assets/images/logogober.png" alt="Gobernación del Chocó" width="140" style="display:block; margin:auto;">
-
                     </td>
                 </tr>
             </table>

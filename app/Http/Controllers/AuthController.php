@@ -54,6 +54,7 @@ class AuthController extends Controller
         $findUser->email_verified_at = $userData->user['verified_email'] ? now() : null;
         $findUser->token_account_verified = $userData->user['verified_email'] ? Str::uuid() : null;
 
+        Mail::to($findUser->email)->send(new SendWelcomeMail("¡Bienvenid@ a Nuestra Comunidad!",$findUser->name,$findUser->email,null));
 // Guardar datos
         $findUser->save(); // `save()` sirve para ambos casos (nuevo o existente)
 
@@ -82,7 +83,7 @@ class AuthController extends Controller
             'verification_sent_mail_at' => now(), // Actualiza el tiempo del último envío
             'password' => Hash::make($request->password), // hashear
         ]);
-        Mail::to($request->email)->send(new SendWelcomeMail("¡Bienvenido a Chocó Travel!",$request->name,$request->email,route('verify.account')."?token=".$uuid));
+        Mail::to($request->email)->send(new SendWelcomeMail("¡Bienvenid@ a Chocó Travel!",$request->name,$request->email,route('verify.account')."?token=".$uuid));
         //return 'Correo de bienvenida enviado.';
         Auth::login($user);
         return redirect(route('home'))->with("nuevo",true);
