@@ -6,7 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -46,6 +48,7 @@ class AuthController extends Controller
         $findUser->avatar = $userData->avatar;
         $findUser->ip_register = $request->ip();
         $findUser->email_verified_at = $userData->user['verified_email'] ? now() : null;
+        $findUser->token_account_verified = $userData->user['verified_email'] ? Str::uuid() : null;
 
 // Guardar datos
         $findUser->save(); // `save()` sirve para ambos casos (nuevo o existente)
@@ -71,8 +74,11 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'ip_register' => $request->ip(),
+            'token_account_verified' => $uuid = Str::uuid(),
             'password' => Hash::make($request->password), // hashear
         ]);
+        Mail::to($request->email)->send(new SendWelcomeMail($request->name,"https://chocotravel.travel/verify?id=".$uuid));
+        //return 'Correo de bienvenida enviado.';
         Auth::login($user);
         return redirect(route('home'))->with("nuevo",true);
     }

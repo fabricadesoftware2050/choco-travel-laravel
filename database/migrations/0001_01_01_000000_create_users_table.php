@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('country')->nullable();
             $table->longText('avatar')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->longText('token_account_verified')->nullable();
             $table->string('password')->nullable();
             $table->string('google_id')->nullable();
             $table->string('ip_register')->nullable();
