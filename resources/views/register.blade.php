@@ -121,7 +121,7 @@
 
             $('#message').hide(); // Ocultamos el mensaje por defecto
 
-            if (email && password && name && termsChecked) {
+            if (email && password && password==confirmPassword && name && termsChecked) {
                 $('#spinner').show();
                 $('#registerForm').submit();
             } else if (!emailRegex.test(email)) {
