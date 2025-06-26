@@ -25,6 +25,9 @@
                 <p class="text-md text-center text-gray-600 mb-6">
                     Regístrate para crear experiencias, comunicarte con guías turisticos, guardar destinos favoritos y más
                 </p>
+                <div id="message" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 hidden">
+
+                </div>
                 @if ($errors->any())
                     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
                         <ul class="list-disc pl-5">
@@ -42,13 +45,13 @@
                         </ul>
                     </div>
                 @endif
-                <form method="post" action="{{route('auth.register')}}" class="space-y-4">
+                <form id="registerForm" method="post" action="{{route('auth.register')}}" class="space-y-4">
                     @csrf
                     <div>
                         <label class="block text-gray-700 text-sm font-medium">Nombre completo</label>
                         <div class="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
                             <i class="fas fa-user text-gray-400 mr-2"></i>
-                            <input name="name" required type="text" placeholder="Tu nombre completo" class="w-full focus:outline-none" value="{{ old('name') }}" />
+                            <input id="input_name" name="name" required type="text" placeholder="Tu nombre completo" class="w-full focus:outline-none" value="{{ old('name') }}" />
                         </div>
                     </div>
 
@@ -58,14 +61,15 @@
                         <label class="block text-gray-700 text-sm font-medium">Correo electrónico</label>
                         <div class="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
                             <i class="fas fa-envelope text-gray-400 mr-2"></i>
-                            <input name="email" required placeholder="Ingrese su correo" type="email" class="w-full focus:outline-none" value="{{ old('email') }}" />
+                            <input id="input_email" name="email" required placeholder="Ingrese su correo" type="email" class="w-full focus:outline-none" value="{{ old('email') }}" />
                         </div>
                     </div>
                     <div>
                         <label class="block text-gray-700 text-sm font-medium">Contraseña</label>
                         <div class="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
                             <i class="fas fa-lock text-gray-400 mr-2"></i>
-                            <input name="password" required placeholder="Mínimo 8 caracteres" type="password" class="w-full focus:outline-none" />
+                            <input id="input_password" name="password" required placeholder="Mínimo 8 caracteres" type="password" class="w-full focus:outline-none" />
+                            <i class="fas fa-eye-slash text-gray-400 mr-2 cursor-pointer" onclick="showPassword()"></i>
                         </div>
                     </div>
 
@@ -73,7 +77,8 @@
                         <label class="block text-gray-700 text-sm font-medium">Confirmar Contraseña</label>
                         <div class="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
                             <i class="fas fa-lock text-gray-400 mr-2"></i>
-                            <input required placeholder="Repita la contraseña" name="password_confirmation" type="password" class="w-full focus:outline-none" />
+                            <input required id="input_password_confirm" placeholder="Repita la contraseña" name="password_confirmation" type="password" class="w-full focus:outline-none" />
+                            <i class="fas fa-eye-slash text-gray-400 mr-2 cursor-pointer" onclick="showPassword()"></i>
                         </div>
                     </div>
 
@@ -81,7 +86,7 @@
                         <input id="terms" required name="terms" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
                         <label for="terms" class="ml-2 block text-sm text-gray-700">Acepto los <a href="#" class="text-yellow-600 underline">términos y condiciones</a></label>
                     </div>
-                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Crear cuenta</button>
+                    <button type="button" onclick="doRegister()" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Crear cuenta</button>
                 </form>
 
                 <div class="mt-4">
@@ -104,7 +109,55 @@
         document.addEventListener('contextmenu', function (e) {
             e.preventDefault();
         });
+
+        function doRegister() {
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const email = $('#input_email').val();
+            const password = $('#input_password').val();
+            const name = $('#input_name').val();
+            const confirmPassword = $('#input_password_confirm').val();
+            const termsChecked = $('#terms').is(':checked');
+
+            $('#message').hide(); // Ocultamos el mensaje por defecto
+
+            if (email && password && name && termsChecked) {
+                $('#spinner').show();
+                $('#registerForm').submit();
+            } else if (!emailRegex.test(email)) {
+                $('#message')
+                    .html(`<ul class="list-disc pl-5">
+                    <li>El correo no tiene el formato correcto</li>
+                  </ul>`)
+                    .show();
+            }else if (password!=confirmPassword) {
+                $('#message')
+                    .html(`<ul class="list-disc pl-5">
+                    <li>Las contraseñas no coinciden.</li>
+                  </ul>`)
+                    .show();
+            } else if (!termsChecked) {
+                $('#message')
+                    .html(`<ul class="list-disc pl-5">
+                    <li>Debe aceptar los términos.</li>
+                  </ul>`)
+                    .show();
+            } else {
+                $('#message')
+                    .html(`<ul class="list-disc pl-5">
+                    <li>Todos los campos son obligatorios</li>
+                  </ul>`)
+                    .show();
+            }
+        }
+
+        function showPassword() {
+            const $input = $('#input_password');
+            const type = $input.attr('type') === 'password' ? 'text' : 'password';
+            $input.attr('type', type);
+            $('#input_password_confirm').attr('type', type);
+        }
+
+
     </script>
-
-
 @endsection
