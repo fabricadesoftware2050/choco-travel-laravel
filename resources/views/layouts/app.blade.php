@@ -48,21 +48,6 @@
 @include("inc/footer")
 <!-- En tu src/index.html justo antes del </body> -->
 @yield('js')
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-
-        new google.translate.TranslateElement(
-            {
-                pageLanguage: 'es',
-                includedLanguages: 'es,en,fr,de,pt,it',
-                layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
-                autoDisplay: false
-            },
-            'google_translate_element'
-        );
-    }
-</script>
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
 </html>
