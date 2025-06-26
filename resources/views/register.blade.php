@@ -84,7 +84,7 @@
 
                     <div class="flex items-center">
                         <input id="terms" required name="terms" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
-                        <label for="terms" class="ml-2 block text-sm text-gray-700">Acepto los <a href="#" class="text-yellow-600 underline">términos y condiciones</a></label>
+                        <label for="terms" class="ml-2 block text-sm text-gray-700">Acepto los <a target="_blank" href="https://and.gov.co/politicas/terminos-condiciones" class="text-yellow-600 underline">términos y condiciones</a></label>
                     </div>
                     <button type="button" onclick="doRegister()" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Crear cuenta</button>
                 </form>
