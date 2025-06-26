@@ -29,7 +29,11 @@
                     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
                         <ul class="list-disc pl-5">
                             @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
+                                @if($error=="validation.required")
+                                    <li>{{ str_replace("validation.required", "Llene los campos obligatorios", $error)}}</li>
+                                @else
+                                    <li>{{ $error}}</li>
+                                @endif
                             @endforeach
                         </ul>
                     </div>
@@ -48,21 +52,21 @@
                         <label class="block text-gray-700 text-sm font-medium">Correo electrónico</label>
                         <div class="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
                             <i class="fas fa-envelope text-gray-400 mr-2"></i>
-                            <input name="email" placeholder="Ingrese su correo" type="email" class="w-full focus:outline-none" value="{{ old('email') }}" />
+                            <input name="email" id="input_email" required placeholder="Ingrese su correo" type="email" class="w-full focus:outline-none" value="{{ old('email') }}" />
                         </div>
                     </div>
                     <div>
                         <label class="block text-gray-700 text-sm font-medium">Contraseña</label>
                         <div class="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
                             <i class="fas fa-lock text-gray-400 mr-2"></i>
-                            <input name="password" placeholder="Ingrese su contraseña" type="password" class="w-full focus:outline-none" />
+                            <input name="password" id="input_password" required placeholder="Ingrese su contraseña" type="password" class="w-full focus:outline-none" />
                         </div>
                     </div>
                     <p class="text-sm text-end mt-4">
                         <a href="{{route('resetPassword')}}" class="text-yellow-600 underline">Restablecer contraseña</a>
                     </p>
 
-                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Acceder</button>
+                    <button onclick="doLogin()" type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Acceder</button>
                 </form>
                 <div class="mt-4">
                     <a href="{{route('redirect.google')}}" class="w-full border border-gray-300 py-2 rounded-md flex items-center justify-center gap-2 hover:bg-gray-100">
@@ -86,6 +90,14 @@
         document.addEventListener('contextmenu', function (e) {
             e.preventDefault();
         });
+
+    function doLogin () {
+        if($('#input_email').val() && $('#input_password').val()){
+            $('#spinner').show();
+        }
+    }
+
+
     </script>
 
 

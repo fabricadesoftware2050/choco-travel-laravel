@@ -49,5 +49,22 @@
 <!-- En tu src/index.html justo antes del </body> -->
 @yield('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+@include('inc.spinner')
+<script>
+    $('#spinner').hide();
+    const showLoading = () => {
+        $('#spinner').show(); // Mostrar el spinner apenas el DOM esté listo
+    };
+    const hiddeLoading = () => {
+        $('#spinner').fadeOut('slow'); // Mostrar el spinner apenas el DOM esté listo
+    };
+
+    $(window).on('load', function () {
+        $('#spinner').fadeOut('slow'); // Ocultar cuando todo haya cargado
+    });
+</script>
+
 </body>
 </html>
